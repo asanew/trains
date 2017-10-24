@@ -4,6 +4,23 @@
   <strong>Name:</strong>
   <%= @route.name %>
 </p>
+<p>
+  <strong>Stations:</strong>
+  <% if @route.railway_stations.empty? %>
+    There is no stations
+  <% else %>
+    <%= render @route.railway_stations %>
+  <% end %>
+</p>
+<p>
+  <strong>Trains:</strong>
+  <% if @route.trains.empty? %>
+    There is no trains
+  <% else %>
+    <%= render @route.trains %>
+  <% end %>
+  
+</p>
 
 <%= link_to 'Update', edit_route_path(@route) %>
 <%= link_to 'Back', routes_path %>
