@@ -5,6 +5,9 @@
   <%= @train.number %>
 </p>
 <p>
+  <%= render 'wagonsinfo', train: @train %>
+</p>
+<p>
   <strong>Route:</strong>
   <% if @train.route.present? %>
     <%= @train.route.name %>
@@ -12,6 +15,7 @@
     No route assigned
   <% end %>
 </p>
+
 <p>
   <strong>Station:</strong>
   <% if @train.current_station.present? %>
