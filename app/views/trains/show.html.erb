@@ -5,39 +5,8 @@
   <%= @train.number %>
 </p>
 <p>
-  <% unless @train.wagons.empty? %>
-    <table>
-      <thead>
-      <tr>
-        <th>Wagon type</th>
-        <th>Number</th>
-        <th>Top seats</th>
-        <th>Bottom seats</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      <% WagonType.all.each do |wagon_type| %>
-        <tr>
-          <td><%= wagon_type.name %></td>
-          <% wagons_by_type = @train.wagons.where(wagon_type: wagon_type) %>
-          <% wagons_top_seats = wagons_bottom_seats = 0 %>
-          <% wagons_by_type.each do |w| %>
-            <% wagons_top_seats += w.top_seats %>
-            <% wagons_bottom_seats += w.bottom_seats %>
-          <% end %>
-          <td><%= wagons_by_type.count %></td>
-          <td><%= wagons_top_seats %></td>
-          <td><%= wagons_bottom_seats %></td>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    Train has no wagons
-  <% end %>
 </p>
-
+  <%= render 'wagonsinfo', train: @train %>
 <p>
   <strong>Route:</strong>
   <% if @train.route.present? %>

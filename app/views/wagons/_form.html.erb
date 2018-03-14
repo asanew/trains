@@ -4,7 +4,7 @@
     <div class="field">
       <%= form.label 'Train' %>
       <%= form.collection_select :train_id, Train.all, :id, :number %>
-      <%= form.label 'Train' %>
+      <%= form.label 'Wagon type' %>
       <%= form.collection_select :wagon_type_id, WagonType.all, :id, :name %>
       <%= form.label :top_seats %>
       <%= form.text_field :top_seats %>
