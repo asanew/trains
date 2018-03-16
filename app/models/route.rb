@@ -4,4 +4,13 @@ class Route < ApplicationRecord
   has_many :railway_stations, through: :railway_stations_routes
 
   validates :name, presence: true
+  validate :stations_count
+
+  private
+
+  def stations_count
+    if railway_stations.size < 2
+      errors.add(:base, 'Route should contains at least 2 stations')
+    end
+  end
 end
