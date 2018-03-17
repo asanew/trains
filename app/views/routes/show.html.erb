@@ -11,7 +11,7 @@
   <% else %>
     <table>
       <tbody>
-        <%= render @route.railway_stations %>
+        <%= render @route.railway_stations.number_sort.all %>
       </tbody>
     </table>
   <% end %>
