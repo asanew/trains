@@ -2,6 +2,13 @@ class Wagon < ApplicationRecord
   belongs_to :wagon_type
   belongs_to :train
 
-  validates :top_seats, numericality: {greater_than_or_equal_to: 0}
-  validates :bottom_seats, numericality: {greater_than: 0}
+  validates :number, presence: true
+
+  before_validation :set_number
+
+  private
+
+  def set_number
+    number = self.train.wagons.maximum(:number)+1
+  end
 end
