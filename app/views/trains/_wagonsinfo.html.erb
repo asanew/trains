@@ -4,19 +4,14 @@
     <tr>
       <th>Wagon type</th>
       <th>Number</th>
-      <th>Top seats</th>
-      <th>Bottom seats</th>
     </tr>
     </thead>
 
     <tbody>
-    <% wagons_info = train.wagons_data %>
-    <% Wagon.wagon_types.each do |wagon_type| %>
+    <% train.wagons.each do |wagon| %>
       <tr>
-        <td><%= wagon_type %></td>
-        <td><%= wagons_info[wagon_type][:quantity] %></td>
-        <td><%= wagons_info[wagon_type][:top_seats] %></td>
-        <td><%= wagons_info[wagon_type][:bottom_seats] %></td>
+        <td><%= wagon.class.name %></td>
+        <td><%= link_to wagon.number, wagon %></td>
       </tr>
     <% end %>
     </tbody>

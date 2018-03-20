@@ -33,10 +33,11 @@ class WagonsController < ApplicationController
   end
 
   def create
-    @wagon = Wagon.new(wagon_params)
+    #@wagon = Object.const_get(wagon_params[:type]).new(wagon_params)
+    #wag = Object.const_get(wagon_params[:type])
     respond_to do |format|
       if @wagon.save
-        format.html { redirect_to @wagon, notice: 'New wagon was created.' }
+        format.html { redirect_to 'wagon', wagon: @wagon, notice: 'New wagon was created.' }
       else
         format.html { render :new }
       end
@@ -51,6 +52,6 @@ class WagonsController < ApplicationController
 
   def wagon_params
     params.require(:wagon).permit(:top_seats, :side_bottom_seats, :side_top_seats, :bottom_seats,
-                                  :seat_places, :train_id)
+                                  :seat_places, :type, :train_id)
   end
 end
