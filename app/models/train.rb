@@ -4,10 +4,10 @@ class Train < ApplicationRecord
   has_many :tickets
   has_many :wagons
 
-  def get_wagons_data
+  def wagons_data
     result = {}
-    WagonType.all.each do |wt|
-      wagons_by_type = wagons.where(wagon_type: wt)
+    Wagon.wagon_types.each do |wt|
+      wagons_by_type = wagons.where(type: wt)
       result[wt] = { quantity: wagons_by_type.count, top_seats: 0, bottom_seats: 0 }
       wagons_by_type.each do |wagon|
         result[wt][:top_seats] += wagon.top_seats

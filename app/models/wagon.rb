@@ -1,14 +1,16 @@
 class Wagon < ApplicationRecord
-  belongs_to :wagon_type
   belongs_to :train
 
-  validates :number, presence: true
+  before_create :set_number
 
-  before_validation :set_number
+  def self.wagon_types
+     %w( CompartmentWagon ReservedWagon SeatWagon SleepWagon )
+  end
 
   private
 
   def set_number
-    number = self.train.wagons.maximum(:number)+1
+    self.number = ( train.wagons.maximum(:number) || 0 ) + 1
   end
+
 end

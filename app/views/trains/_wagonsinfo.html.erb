@@ -10,10 +10,10 @@
     </thead>
 
     <tbody>
-    <% wagons_info = train.get_wagons_data %>
-    <% WagonType.all.each do |wagon_type| %>
+    <% wagons_info = train.wagons_data %>
+    <% Wagon.wagon_types.each do |wagon_type| %>
       <tr>
-        <td><%= wagon_type.name %></td>
+        <td><%= wagon_type %></td>
         <td><%= wagons_info[wagon_type][:quantity] %></td>
         <td><%= wagons_info[wagon_type][:top_seats] %></td>
         <td><%= wagons_info[wagon_type][:bottom_seats] %></td>
