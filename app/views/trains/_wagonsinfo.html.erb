@@ -11,7 +11,7 @@
     <% train.wagons.each do |wagon| %>
       <tr>
         <td><%= wagon.class.name %></td>
-        <td><%= link_to wagon.number, wagon %></td>
+        <td><%= link_to wagon.number, wagon_path(wagon) %></td>
       </tr>
     <% end %>
     </tbody>
