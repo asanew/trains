@@ -2,8 +2,28 @@
   <td><%= wagon.train.number %></td>
   <td><%= wagon.number %></td>
   <td><%= wagon.type %></td>
-  <td><%= wagon.top_seats %></td>
-  <td><%= wagon.bottom_seats %></td>
+  <% case wagon.type %>
+    <% when 'CompartmentWagon' %>
+      <td>Top seats:
+      <%= wagon.top_seats %><br>
+      Bottom seats:
+      <%= wagon.bottom_seats %></td>
+    <% when 'ReservedWagon' %>
+      <td>Top seats:
+      <%= wagon.top_seats %><br>
+      Bottom seats:
+      <%= wagon.bottom_seats %><br>
+      Side top seats:
+      <%= wagon.side_top_seats %><br>
+      Side bottom seats:
+      <%= wagon.side_bottom_seats %></td>
+    <% when 'SeatWagon' %>
+      <td>Seat places:
+      <%= wagon.seat_places %></td>
+    <% when 'SleepWagon' %>
+      <td>Bottom seats:
+      <%= wagon.bottom_seats %></td>
+  <% end %>
   <td><%= link_to 'Show', wagon_path(wagon) %></td>
   <td><%= link_to 'Edit', edit_wagon_path(wagon) %></td>
   <td><%= link_to 'Destroy', wagon_path(wagon), method: :delete, data: { confirm: 'Are you sure?' } %></td>

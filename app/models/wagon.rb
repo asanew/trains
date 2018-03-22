@@ -7,10 +7,11 @@ class Wagon < ApplicationRecord
      %w( CompartmentWagon ReservedWagon SeatWagon SleepWagon )
   end
 
+  scope :ordered_wagons, -> (desc_sort) { order("number #{desc_sort ? 'DESC' : 'ASC'}").all }
+
   private
 
   def set_number
     self.number = ( train.wagons.maximum(:number) || 0 ) + 1
   end
-
 end

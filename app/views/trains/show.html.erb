@@ -24,6 +24,13 @@
     Train is moving
   <% end %>
 </p>
+<p>
+  <% if @train.wagons_order %>
+    Wagons order from last
+  <% else %>
+    Wagons order from first
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_train_path(@train) %> |
 <%= link_to 'Back', trains_path %>
