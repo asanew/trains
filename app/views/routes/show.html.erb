@@ -9,7 +9,11 @@
   <% if @route.railway_stations.empty? %>
     There is no stations
   <% else %>
-    <%= render @route.railway_stations %>
+    <table>
+      <tbody>
+        <%= render @route.railway_stations.number_sort %>
+      </tbody>
+    </table>
   <% end %>
 </p>
 <p>

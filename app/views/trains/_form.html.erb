@@ -8,6 +8,7 @@
     <%= form.collection_select :route_id, Route.all, :id, :name %>
     <%= form.label :current_station %>
     <%= form.collection_select :current_station_id, RailwayStation.all, :id, :title %>
+    <%= form.check_box :wagons_order, {}, 'true', 'false' %> Wagons order from last
   </div>
 
   <div class="actions">

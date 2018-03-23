@@ -1,7 +1,17 @@
 class Wagon < ApplicationRecord
-  belongs_to :wagon_type
   belongs_to :train
 
-  validates :top_seats, numericality: {greater_than_or_equal_to: 0}
-  validates :bottom_seats, numericality: {greater_than: 0}
+  before_create :set_number
+
+  def self.wagon_types
+     %w( CompartmentWagon ReservedWagon SeatWagon SleepWagon )
+  end
+
+  scope :ordered_wagons, -> (desc_sort) { order("number #{desc_sort ? 'DESC' : 'ASC'}").all }
+
+  private
+
+  def set_number
+    self.number = ( train.wagons.maximum(:number) || 0 ) + 1
+  end
 end

@@ -4,6 +4,8 @@
   <div class="field">
     <%= form.label 'Name' %>
     <%= form.text_field :name, id: :route_name %>
+    <%= form.label 'Stations' %>
+    <%= form.collection_select :railway_station_ids, RailwayStation.all, :id, :title, {}, multiple: true %>
   </div>
 
   <div class="actions">
