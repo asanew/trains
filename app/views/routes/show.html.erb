@@ -10,8 +10,29 @@
     There is no stations
   <% else %>
     <table>
+      <thead>
+        <tr>
+          <td>Название</td>
+          <td>Позиция</td>
+        </tr>
+      </thead>
       <tbody>
-        <%= render @route.railway_stations.number_sort %>
+        <% @route.railway_stations.number_sort.each do |station| %>
+          <tr>
+            <td><%= station.title %></td>
+            <td>
+              <%= form_with url: update_position_railway_station_path(station) , method: :patch do |form| %>
+              <div class="field">
+                <%= form.text_field :position, value: station.position_in(@route) %>
+                <%= form.hidden_field :route_id, value: @route.id %>
+              </div>
+              <div class="actions">
+                <%= form.submit 'Update' %>
+              </div>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   <% end %>
