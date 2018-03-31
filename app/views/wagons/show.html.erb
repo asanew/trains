@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= render 'wagon', wagon: @wagon %>
+  <%= render 'wagon', train: @wagon.train, wagon: @wagon %>
 </p>
 
 <%= link_to 'Edit', edit_wagon_path(@wagon) %> |
-<%= link_to 'Back', train_wagons_path %>
+<%= link_to 'Back', train_wagons_path(@wagon.train) %>

@@ -1,4 +1,4 @@
-<%= form_with(model: [train, wagon], url: train_wagons_path(train), local: true) do |form| %>
+<%= form_with(model: [train, wagon], url: (wagon.new_record? ? nil : wagon_path(wagon)), local: true) do |form| %>
     <%= render 'common/error', resource: wagon %>
 
     <div class="field">
