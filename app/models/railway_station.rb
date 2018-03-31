@@ -5,6 +5,8 @@ class RailwayStation < ApplicationRecord
   has_many :railway_stations_routes
   has_many :routes, through: :railway_stations_routes
 
+  scope :number_sort, -> { order('railway_stations_routes.railway_station_number').all }
+
   def update_position(route, position)
     station_route = station_route(route)
     station_route.update(railway_station_number: position) if @station_route
@@ -14,9 +16,9 @@ class RailwayStation < ApplicationRecord
     station_route(route).try(:railway_station_number)
   end
 
+  protected
+
   def station_route(route)
     @station_route ||= railway_stations_routes.where(route: route).first
   end
-
-  scope :number_sort, -> { order('railway_stations_routes.railway_station_number').all }
 end

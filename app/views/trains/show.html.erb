@@ -8,6 +8,9 @@
   <%= render 'wagonsinfo', train: @train %>
 </p>
 <p>
+  <%= link_to 'Add wagon', new_train_wagon_path(@train) %>
+</p>
+<p>
   <strong>Route:</strong>
   <% if @train.route.present? %>
     <%= @train.route.name %>
