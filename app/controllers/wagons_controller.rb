@@ -8,7 +8,6 @@ class WagonsController < ApplicationController
 
   def new
     @wagon = Wagon.new
-    @wagon.train = @train
   end
 
   def show

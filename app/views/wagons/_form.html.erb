@@ -1,9 +1,7 @@
-<%= form_with(model: [train, wagon], url: (wagon.new_record? ? nil : wagon_path(wagon)), local: true) do |form| %>
+<%= form_with(model: wagon, url: wagon_path(wagon), local: true) do |form| %>
     <%= render 'common/error', resource: wagon %>
 
     <div class="field">
-      <%= form.label 'Train' %>
-      <%= form.collection_select :train_id, Train.all, :id, :number %>
       <%= form.label 'Wagon type' %>
       <%= form.collection_select :type, Wagon.wagon_types, :to_s, :to_s %>
       <%= form.label :top_seats %>

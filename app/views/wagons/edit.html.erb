@@ -1,6 +1,6 @@
 <h1>Editing Wagon</h1>
 
-<%= render 'form', train: @wagon.train, wagon: @wagon %>
+<%= render 'form', wagon: @wagon.becomes(Wagon) %>
 
 <%= link_to 'Show', wagon_path(@wagon) %> |
 <%= link_to 'Back', train_wagons_path(@wagon.train) %>
